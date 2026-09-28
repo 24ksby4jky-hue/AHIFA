@@ -1,16 +1,9 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/brand/page-hero";
-import { RfqForm } from "@/components/contact/rfq-form";
+import { RfqFormGate } from "@/components/contact/rfq-form";
 import { company } from "@/content/company";
-import { getProduct } from "@/content/products";
 import { tx } from "@/lib/copy";
-
-type Search = Record<string, string | string[] | undefined>;
-
-function one(value: string | string[] | undefined) {
-  return Array.isArray(value) ? value[0] : value;
-}
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -24,31 +17,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-export default async function ContactPage({
-  params,
-  searchParams,
-}: {
-  params: Promise<{ locale: string }>;
-  searchParams: Promise<Search>;
-}) {
+export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const sp = await searchParams;
   setRequestLocale(locale);
   const common = await getTranslations("common");
   const en = locale === "en";
-  const productSlug = one(sp.product);
-  const intent = one(sp.intent);
-  const product = productSlug ? getProduct(productSlug) : null;
-  const initialMessage =
-    intent === "file" && product
-      ? en
-        ? `Please send the document set for ${product.model}.`
-        : `请提供 ${product.model} 的资料。`
-      : intent === "drawing" && product
-        ? en
-          ? `Please issue the arrangement drawing for ${product.model}.`
-          : `请出具 ${product.model} 的布置图。`
-        : "";
 
   return (
     <>
@@ -64,7 +37,7 @@ export default async function ContactPage({
         crumbs={[{ href: "/", label: common("home") }, { label: en ? "Contact" : "联系我们" }]}
       />
       <div className="mx-auto grid max-w-[1180px] gap-10 px-5 py-12 lg:grid-cols-[minmax(0,1fr)_320px]">
-        <RfqForm initialProduct={product?.slug} initialMessage={initialMessage} />
+        <RfqFormGate />
         <aside className="h-fit border border-line bg-canvas p-5">
           <p className="font-mono text-[12px] tracking-[0.16em] text-action">{en ? "PLANT" : "工厂"}</p>
           <p className="mt-3 text-[16px] font-semibold text-navy-900">{tx(locale, company.legalName)}</p>
