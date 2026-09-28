@@ -1,0 +1,74 @@
+{
+  "meta": {
+    "siteName": "AHIFA Electric",
+    "description": "Guangdong Ahifa Electric builds high- and low-voltage switchgear in Hengli, Dongguan: metal-clad panels, ring main units, gas-insulated cubicles, transformers, compact substations, and PV grid-connection cabinets."
+  },
+  "nav": {
+    "products": "Products",
+    "solutions": "Solutions",
+    "cases": "Projects",
+    "support": "Support",
+    "about": "About",
+    "news": "News",
+    "contact": "Contact",
+    "menu": "Open menu",
+    "close": "Close menu"
+  },
+  "cta": {
+    "quote": "Request a quote",
+    "products": "View products",
+    "engineer": "Talk to an engineer",
+    "drawing": "View arrangement",
+    "requestFile": "Request the file"
+  },
+  "footer": {
+    "blurb": "HV and LV switchgear, designed, assembled, and routine-tested in Hengli, Dongguan.",
+    "navigate": "Navigate",
+    "series": "Ranges",
+    "contact": "Contact",
+    "legal": "Legal",
+    "privacy": "Privacy",
+    "terms": "Terms of use",
+    "rights": "Guangdong Ahifa Electric Co., Ltd. Catalogue pages; confirmed project files replace the samples."
+  },
+  "common": {
+    "home": "Home",
+    "read": "Read",
+    "view": "View",
+    "all": "All",
+    "filter": "Filter",
+    "clear": "Clear filters",
+    "prev": "Previous",
+    "next": "Next",
+    "page": "Page {page}",
+    "emptyProducts": "Nothing matches these filters. Widen voltage, application, or range — or send the duty to an engineer.",
+    "relatedEmpty": "No other listed models in this range yet.",
+    "filesNote": "This index is for specification talks. Source PDFs are issued after the documents are confirmed — request them from this page."
+  },
+  "form": {
+    "name": "Name",
+    "company": "Company",
+    "country": "Country / region",
+    "email": "Email",
+    "phone": "Phone",
+    "product": "Equipment of interest",
+    "productPlaceholder": "Choose a range or model",
+    "message": "Duty and scope",
+    "messageHint": "Voltage, current, quantity, and delivery place. At least 10 characters.",
+    "optional": "Optional",
+    "submit": "Submit inquiry",
+    "submitting": "Submitting",
+    "required": "Required",
+    "emailInvalid": "Enter a valid email",
+    "messageShort": "Describe the duty in a little more detail (at least 10 characters)",
+    "successTitle": "Inquiry received",
+    "successBody": "A sales engineer will reply within one business day to confirm model, quantity, and delivery place.",
+    "reference": "Reference",
+    "another": "Submit another",
+    "backHome": "Back to home"
+  },
+  "cookie": {
+    "body": "This site only stores your language choice and this notice in the browser. No advertising cookies.",
+    "accept": "Understood"
+  }
+}

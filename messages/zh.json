@@ -1,0 +1,74 @@
+{
+  "meta": {
+    "siteName": "广东阿海法电气",
+    "description": "广东阿海法电气有限公司，东莞横沥高低压成套开关设备制造商。中置柜、环网柜、充气柜、变压器、箱式变电站与光伏并网柜。"
+  },
+  "nav": {
+    "products": "产品",
+    "solutions": "解决方案",
+    "cases": "工程案例",
+    "support": "服务支持",
+    "about": "关于我们",
+    "news": "新闻",
+    "contact": "联系我们",
+    "menu": "打开菜单",
+    "close": "关闭菜单"
+  },
+  "cta": {
+    "quote": "获取报价",
+    "products": "浏览产品",
+    "engineer": "联系工程师",
+    "drawing": "查看结构示意",
+    "requestFile": "索取文件"
+  },
+  "footer": {
+    "blurb": "高低压成套开关设备，设计、装配与出厂试验在东莞横沥完成。",
+    "navigate": "栏目",
+    "series": "产品系列",
+    "contact": "联系",
+    "legal": "法律信息",
+    "privacy": "隐私政策",
+    "terms": "使用条款",
+    "rights": "广东阿海法电气有限公司。样本页面，正式项目资料以确认稿为准。"
+  },
+  "common": {
+    "home": "首页",
+    "read": "阅读",
+    "view": "查看",
+    "all": "全部",
+    "filter": "筛选",
+    "clear": "清除筛选",
+    "prev": "上一页",
+    "next": "下一页",
+    "page": "第 {page} 页",
+    "emptyProducts": "没有符合该筛选条件的产品。放宽电压、应用或系列，或把工况直接发给工程师。",
+    "relatedEmpty": "同系列暂无其他在列型号。",
+    "filesNote": "目录用于选型沟通。PDF 原件在资料确认后提供，可从本页发起索取。"
+  },
+  "form": {
+    "name": "姓名",
+    "company": "公司",
+    "country": "国家 / 地区",
+    "email": "邮箱",
+    "phone": "电话",
+    "product": "意向产品",
+    "productPlaceholder": "选择系列或型号",
+    "message": "需求说明",
+    "messageHint": "请写明电压、电流、数量、交货地。至少 10 个字。",
+    "optional": "选填",
+    "submit": "提交询盘",
+    "submitting": "正在提交",
+    "required": "请填写",
+    "emailInvalid": "请填写有效邮箱",
+    "messageShort": "请把工况写具体一些（至少 10 个字）",
+    "successTitle": "询盘已收到",
+    "successBody": "销售工程师将在 1 个工作日内回复，确认型号、数量与交货地。",
+    "reference": "编号",
+    "another": "再提一单",
+    "backHome": "返回首页"
+  },
+  "cookie": {
+    "body": "本站只在您的浏览器里记住语言和这条提示，不投放广告。",
+    "accept": "知道了"
+  }
+}
