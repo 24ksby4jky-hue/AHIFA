@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState, type FormEvent, type ReactNode } from "react";
+import { Suspense, useMemo, useState, type FormEvent, type ReactNode } from "react";
+import { useSearchParams } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { BrandButton } from "@/components/brand/brand-button";
 import { Input } from "@/components/ui/input";
@@ -171,6 +172,35 @@ function Field({
         <p className="text-[12px] leading-[22px] text-muted-ink">{hint}</p>
       ) : null}
     </div>
+  );
+}
+
+function RfqFormFromQuery() {
+  const sp = useSearchParams();
+  const locale = useLocale();
+  const productSlug = sp.get("product") || undefined;
+  const intent = sp.get("intent");
+  const found = productSlug ? products.find((item) => item.slug === productSlug) : undefined;
+  const en = locale === "en";
+  const initialMessage =
+    intent === "file" && found
+      ? en
+        ? `Please send the document set for ${found.model}.`
+        : `请提供 ${found.model} 的资料。`
+      : intent === "drawing" && found
+        ? en
+          ? `Please issue the arrangement drawing for ${found.model}.`
+          : `请出具 ${found.model} 的布置图。`
+        : "";
+
+  return <RfqForm initialProduct={found?.slug} initialMessage={initialMessage} />;
+}
+
+export function RfqFormGate() {
+  return (
+    <Suspense fallback={<RfqForm />}>
+      <RfqFormFromQuery />
+    </Suspense>
   );
 }
 
