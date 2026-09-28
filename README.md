@@ -31,8 +31,9 @@ pnpm dev
 
 ```bash
 pnpm build
-pnpm start
 ```
+
+`pnpm build` 写出静态站点到 `out/`（`output: 'export'`，目录带尾斜杠）。用 nginx 把站点根指到这个目录即可，例如 `root /var/www/ahifa/out;`。`out/index.html` 会把 `/` 送到中文首页 `/zh/`，英文首页在 `/en/`。静态导出不跑 Next 服务，也不使用 middleware。
 
 ## 文案说明
 

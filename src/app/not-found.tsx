@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function RootNotFound() {
   return (
     <html lang="zh">
@@ -18,12 +20,12 @@ export default function RootNotFound() {
             地址没有对应的产品、方案或文章。回到首页，或改用英文站。
           </p>
           <p style={{ marginTop: 28 }}>
-            <a href="/zh" style={{ color: "#fff", marginRight: 20 }}>
+            <Link href="/zh" style={{ color: "#fff", marginRight: 20 }}>
               中文首页
-            </a>
-            <a href="/en" style={{ color: "#fff" }}>
+            </Link>
+            <Link href="/en" style={{ color: "#fff" }}>
               English home
-            </a>
+            </Link>
           </p>
         </main>
       </body>
