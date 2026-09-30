@@ -1,7 +1,6 @@
 import { setRequestLocale } from "next-intl/server";
 import { BrandButton } from "@/components/brand/brand-button";
 import { SectionHeading } from "@/components/brand/section-heading";
-import { EquipmentPlate } from "@/components/visuals/equipment";
 import { cases } from "@/content/cases";
 import { company, standards, stats } from "@/content/company";
 import { news } from "@/content/news";
@@ -39,8 +38,14 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               </BrandButton>
             </div>
           </div>
-          <div className="chamfer border border-white/15">
-            <EquipmentPlate kind="lineup" title={en ? "AHIFA lineup" : "阿海法成套示意"} />
+          <div className="chamfer overflow-hidden border border-white/15">
+            <img
+              src="/media/home-workshop.webp"
+              alt={en ? "Switchgear being wired in the Hengli workshop" : "横沥车间里正在配线的中置柜"}
+              width={1215}
+              height={660}
+              className="aspect-[16/10] h-auto w-full object-cover"
+            />
           </div>
         </div>
         <div className="border-t border-white/10">
@@ -76,16 +81,25 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             <li key={item.id}>
               <Link
                 href={`/products?series=${item.id}`}
-                className="chamfer group flex h-full flex-col border border-line bg-white p-5 hover:border-action"
+                className="chamfer group flex h-full flex-col border border-line bg-white hover:border-action"
               >
-                <div className="flex items-baseline justify-between">
-                  <span className="font-mono text-[12px] tracking-[0.16em] text-action">{item.index}</span>
-                  <span className="text-[12px] text-muted-ink group-hover:text-action">
-                    {en ? "Open" : "进入"}
-                  </span>
+                {item.image ? (
+                  <img
+                    src={item.image.src}
+                    alt={tx(locale, item.image.alt)}
+                    className="h-44 w-full border-b border-line bg-canvas object-contain"
+                  />
+                ) : null}
+                <div className="flex flex-1 flex-col p-5">
+                  <div className="flex items-baseline justify-between">
+                    <span className="font-mono text-[12px] tracking-[0.16em] text-action">{item.index}</span>
+                    <span className="text-[12px] text-muted-ink group-hover:text-action">
+                      {en ? "Open" : "进入"}
+                    </span>
+                  </div>
+                  <h3 className="mt-4 text-[22px] leading-[30px] font-semibold text-navy-900">{tx(locale, item.name)}</h3>
+                  <p className="mt-2 text-[15px] leading-[24px] text-muted-ink">{tx(locale, item.summary)}</p>
                 </div>
-                <h3 className="mt-4 text-[22px] leading-[30px] font-semibold text-navy-900">{tx(locale, item.name)}</h3>
-                <p className="mt-2 text-[15px] leading-[24px] text-muted-ink">{tx(locale, item.summary)}</p>
               </Link>
             </li>
           ))}

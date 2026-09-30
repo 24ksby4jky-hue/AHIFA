@@ -16,6 +16,12 @@ export type PlateKind =
   | "pv"
   | "substation";
 
+export type CatalogImage = {
+  src: string;
+  alt: Copy;
+  note?: Copy;
+};
+
 export type Product = {
   slug: string;
   series: SeriesId;
@@ -23,6 +29,8 @@ export type Product = {
   plate: PlateKind;
   voltages: string[];
   applications: ApplicationId[];
+  image?: CatalogImage;
+  gallery?: CatalogImage[];
   name: Copy;
   summary: Copy;
   overview: Copy[];
@@ -38,6 +46,7 @@ export const seriesList: {
   index: string;
   name: Copy;
   summary: Copy;
+  image?: CatalogImage;
 }[] = [
   {
     id: "hv",
@@ -56,6 +65,10 @@ export const seriesList: {
       zh: "GCS / GCK / MNS 抽出式，GGD 固定式，以及 XL-21 动力配电箱。",
       en: "GCS, GCK, and MNS withdrawable assemblies, GGD fixed panels, and XL-21 power distribution boxes.",
     },
+    image: {
+      src: "/media/series-lv.webp",
+      alt: { zh: "低压成套开关柜", en: "LV switchgear lineup" },
+    },
   },
   {
     id: "transformer",
@@ -64,6 +77,14 @@ export const seriesList: {
     summary: {
       zh: "SCB 干式与油浸式配电变压器，与高低压柜、箱变配套出厂。",
       en: "SCB dry-type and oil-immersed distribution transformers, shipped with the HV, LV, or substation lineup.",
+    },
+    image: {
+      src: "/media/series-transformer.webp",
+      alt: { zh: "树脂浇注干式变压器", en: "Cast-resin dry-type transformer" },
+      note: {
+        zh: "画册中的浇注干式变压器，不标成 SCB14。容量和型号以报价单为准。",
+        en: "Catalogue cast-resin transformer, not labelled SCB14. Rating and model follow the quotation.",
+      },
     },
   },
   {
@@ -102,6 +123,10 @@ export const products: Product[] = [
     series: "hv",
     model: "KYN28-12",
     plate: "kyn",
+    image: {
+      src: "/media/product-kyn28.webp",
+      alt: { zh: "KYN28 铠装中置式开关柜", en: "KYN28 metal-clad switchgear" },
+    },
     voltages: ["12kV"],
     applications: ["grid", "industrial", "building", "mining"],
     name: { zh: "铠装中置式金属封闭开关柜", en: "Metal-clad withdrawable switchgear" },
@@ -146,6 +171,10 @@ export const products: Product[] = [
     series: "hv",
     model: "HXGN15-12",
     plate: "rmu",
+    image: {
+      src: "/media/product-hxgn.webp",
+      alt: { zh: "HXGN 交流金属封闭环网柜", en: "HXGN metal-enclosed ring main unit" },
+    },
     voltages: ["12kV"],
     applications: ["grid", "industrial"],
     name: { zh: "半绝缘交流金属封闭环网柜", en: "Semi-insulated ring main unit" },
@@ -187,6 +216,10 @@ export const products: Product[] = [
     series: "hv",
     model: "HSRM16-12",
     plate: "gis",
+    image: {
+      src: "/media/product-hsrm16.webp",
+      alt: { zh: "HSRM16 全绝缘充气环网柜", en: "HSRM16 fully insulated gas ring main unit" },
+    },
     voltages: ["12kV", "24kV"],
     applications: ["grid", "industrial", "building"],
     name: { zh: "全绝缘充气环网柜", en: "Fully insulated gas ring main unit" },
@@ -228,6 +261,10 @@ export const products: Product[] = [
     series: "lv",
     model: "GCS",
     plate: "gcs",
+    image: {
+      src: "/media/product-gcs.webp",
+      alt: { zh: "GCS 低压抽出式开关柜", en: "GCS LV withdrawable switchgear" },
+    },
     voltages: ["0.4kV"],
     applications: ["industrial", "building", "mining"],
     name: { zh: "低压抽出式开关柜", en: "LV withdrawable switchgear" },
@@ -353,6 +390,24 @@ export const products: Product[] = [
     series: "substation",
     model: "YBW-12",
     plate: "substation",
+    image: {
+      src: "/media/product-ybw.webp",
+      alt: { zh: "欧式预装式箱式变电站", en: "European prefabricated substation" },
+    },
+    gallery: [
+      {
+        src: "/media/product-ybw-wood.webp",
+        alt: { zh: "木纹外壳箱变", en: "Wood-finish substation enclosure" },
+      },
+      {
+        src: "/media/product-ybw-white.webp",
+        alt: { zh: "白壳蓝顶箱变", en: "White substation enclosure with a blue roof" },
+      },
+      {
+        src: "/media/product-ybw-yellow.webp",
+        alt: { zh: "黄壳红顶箱变", en: "Yellow substation enclosure with a red roof" },
+      },
+    ],
     voltages: ["12kV", "0.4kV"],
     applications: ["grid", "industrial", "newenergy", "mining"],
     name: { zh: "欧式预装式箱式变电站", en: "European prefabricated substation" },

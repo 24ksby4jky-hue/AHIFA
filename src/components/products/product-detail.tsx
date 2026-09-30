@@ -35,9 +35,28 @@ export function ProductDetail({ locale, product }: { locale: string; product: Pr
   return (
     <div className="grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
       <div>
-        <div className="chamfer overflow-hidden border border-white/10">
-          <EquipmentPlate kind={product.plate} title={product.model} />
-        </div>
+        {product.image ? (
+          <div className="chamfer overflow-hidden border border-line bg-canvas">
+            <img
+              src={product.image.src}
+              alt={tx(locale, product.image.alt)}
+              className="aspect-[4/3] w-full object-contain"
+            />
+          </div>
+        ) : (
+          <div className="chamfer overflow-hidden border border-white/10">
+            <EquipmentPlate kind={product.plate} title={product.model} />
+          </div>
+        )}
+        {product.gallery?.length ? (
+          <ul className="mt-3 grid grid-cols-3 gap-2">
+            {product.gallery.map((shot) => (
+              <li key={shot.src} className="border border-line bg-canvas">
+                <img src={shot.src} alt={tx(locale, shot.alt)} className="aspect-[4/3] w-full object-contain" />
+              </li>
+            ))}
+          </ul>
+        ) : null}
         <p className="mt-3 font-mono text-[12px] tracking-[0.14em] text-muted-ink">
           {product.model} · {product.voltages.join(" / ")}
         </p>

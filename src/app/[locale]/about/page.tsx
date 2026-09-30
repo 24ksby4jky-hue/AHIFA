@@ -57,6 +57,38 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                 ? "Assembly, busbar, secondary wiring, and routine checks happen at the Hengli address below. Panels that share a single-line are matched before they are packed."
                 : "装配、铜排、二次配线和出厂检查都在下面这个地址完成。同一张一次图上的柜子，在装箱前把接口对好。"}
             </p>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              {(
+                [
+                  { src: "/media/about-plant.webp", alt: en ? "Ahifa plant in Hengli" : "横沥厂房", width: 1210, height: 775 },
+                  { src: "/media/about-gate.webp", alt: en ? "Entrance to the industrial park" : "园区大门", width: 1350, height: 675 },
+                ] as const
+              ).map((shot) => (
+                <img
+                  key={shot.src}
+                  src={shot.src}
+                  alt={shot.alt}
+                  width={shot.width}
+                  height={shot.height}
+                  className="h-auto w-full border border-line object-cover"
+                />
+              ))}
+            </div>
+            <ul className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {(
+                [
+                  ["/media/about-sheet-metal.webp", en ? "Sheet-metal work" : "钣金"],
+                  ["/media/about-welding.webp", en ? "Welding" : "焊接"],
+                  ["/media/about-assembly.webp", en ? "LV panel assembly" : "低压柜装配"],
+                  ["/media/about-test.webp", en ? "Power-frequency withstand test set" : "工频耐压试验台"],
+                ] as const
+              ).map(([src, alt]) => (
+                <li key={src} className="border border-line bg-canvas">
+                  <img src={src} alt={alt} className="aspect-[4/3] w-full object-contain" />
+                  <p className="px-3 py-2 text-[13px] leading-[20px] text-muted-ink">{alt}</p>
+                </li>
+              ))}
+            </ul>
             <dl className="mt-6 grid gap-4 border border-line sm:grid-cols-3">
               {[
                 [en ? "Assembly" : "成套装配", en ? "Panel frames, compartments, enclosure fit." : "柜架、隔室和外壳拼装。"],

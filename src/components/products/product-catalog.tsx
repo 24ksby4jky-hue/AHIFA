@@ -7,6 +7,7 @@ import { EquipmentPlate } from "@/components/visuals/equipment";
 import {
   applicationOptions,
   products,
+  getSeries,
   seriesList,
   voltageOptions,
   type ApplicationId,
@@ -53,6 +54,7 @@ function ProductCatalogView({
   const current = Math.min(Math.max(1, page), pages);
   const slice = filtered.slice((current - 1) * PAGE_SIZE, current * PAGE_SIZE);
   const base = { series, voltage, application };
+  const seriesMeta = seriesId ? getSeries(seriesId) : null;
 
   return (
     <div className="mx-auto grid max-w-[1180px] gap-8 px-5 py-12 lg:grid-cols-[240px_1fr]">
@@ -107,6 +109,18 @@ function ProductCatalogView({
         </Link>
       </form>
       <div>
+        {seriesMeta?.image ? (
+          <figure className="mb-6 border border-line bg-canvas">
+            <img
+              src={seriesMeta.image.src}
+              alt={tx(locale, seriesMeta.image.alt)}
+              className="max-h-72 w-full object-contain"
+            />
+            <figcaption className="border-t border-line px-4 py-3 text-[14px] leading-[22px] text-muted-ink">
+              {tx(locale, seriesMeta.image.note ?? seriesMeta.image.alt)}
+            </figcaption>
+          </figure>
+        ) : null}
         {slice.length === 0 ? (
           <div className="border border-dashed border-line bg-canvas px-5 py-12">
             <p className="font-mono text-[12px] tracking-[0.16em] text-action">00</p>
@@ -120,7 +134,15 @@ function ProductCatalogView({
             {slice.map((item) => (
               <li key={item.slug}>
                 <Link href={`/products/${item.slug}`} className="chamfer block h-full border border-line hover:border-action">
-                  <EquipmentPlate kind={item.plate} title={item.model} className="h-40 object-cover" />
+                  {item.image ? (
+                    <img
+                      src={item.image.src}
+                      alt={tx(locale, item.image.alt)}
+                      className="h-44 w-full bg-canvas object-contain"
+                    />
+                  ) : (
+                    <EquipmentPlate kind={item.plate} title={item.model} className="h-40 object-cover" />
+                  )}
                   <div className="p-4">
                     <p className="font-mono text-[12px] text-action">{item.model}</p>
                     <h2 className="mt-2 text-[18px] leading-[26px] font-semibold text-navy-900">{tx(locale, item.name)}</h2>
